@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>J-event - Accueil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header>
+  <a href="index.html" class="logo">
+    <img src="images/logo.jpg" alt="Logo de J-event" class="logo-img">
+  </a>
+
+  <!-- MENU BURGER MOBILE -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+  <!-- MENU NAVIGATION -->
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="products.html">Événements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- FORMULAIRE DE RECHERCHE -->
+  <form class="search-form" onsubmit="return searchProducts()">
+    <input type="text" id="search-input" placeholder="Rechercher...">
+    <button type="submit">🔍</button>
+  </form>
+
+  <!-- PANIER FIXE À DROITE -->
+  <a href="cart.html" class="cart-icon">
+    🛒 <span id="cart-count">0</span>
+  </a>
+</header>
+
+
+
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Bienvenue sur J-event</h1>
+    <p>Votre boutique en ligne d'événementiel.</p>
+    <a href="products.html" class="btn">Voir les événements</a>
+  </section>
+
+ <!-- PRODUITS MIS EN AVANT -->
+<section class="featured-products">
+  <h2>Événements en approche</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="C:\Users\JABER_kmk\Desktop\J-event - Copie (2)\images\wisdom.jpg" alt="V.I.P">
+      <h3>V.I.P</h3>
+
+      <div class="pricing">
+        <div class="price">
+          <p>50 000 FCFA</p>
+          <button>Ajouter au panier</button>
+        </div>
+
+        <div class="price">
+          <h4>Intermédiaires</h4>
+          <p>10 000 FCFA</p>
+          <button>Ajouter au panier</button>
+        </div>
+
+        <div class="price">
+          <h5>STANDARD</h5>
+          <p>5 000 FCFA</p>
+          <button>Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="confidentialite.html">Politique de Confidentialité</a> |
+    <a href="cgv.html">Conditions Générales de Vente</a> |
+    <a href="cgu.html">Conditions Générales d'Utilisation</a> |
+    <a href="faq.html">Aide & FAQ</a> |
+    <a href="apropos.html">À Propos</a>
+  </div>
+  <p>&copy; 2025 J-event. Tous droits réservés.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.querySelectorAll('.product-card button').forEach((btn, index) => {
+    const produits = [
+      { nom: "V.I.P", prix: 50000 },
+      { nom: "Intermédiataires", prix: 10000 },
+      { nom: "STANDARD", prix: 5000 }
+    ];
+
+    btn.addEventListener('click', () => {
+      ajouterAuPanier(produits[index]);
+    });
+  });
+</script>
+<div id="notif" class="notif">✅ Produit ajouté au panier</div>
+
+</body>
+</html>

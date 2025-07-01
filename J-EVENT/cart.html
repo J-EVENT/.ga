@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J-event - Panier</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="Logo de J-event" class="logo-img">
+    </a>
+
+    <!-- MENU BURGER MOBILE -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <!-- MENU NAVIGATION -->
+    <nav class="nav-links">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Événements</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- PANIER FIXE À DROITE -->
+    <a href="cart.html" class="cart-icon">
+      🛒 <span id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- PANIER -->
+  <main>
+    <h1>Votre panier</h1>
+
+    <div class="cart">
+      <table>
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Total</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+          <!-- Les produits s'afficheront ici grâce à JS -->
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <p><strong>Total : <span id="total">0 FCFA</span></strong></p>
+        <button class="btn" onclick="window.location.href='confirmation.html'">Valider la commande</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 J-event. Tous droits réservés.</p>
+  </footer>
+
+  <!-- NOTIFICATION (produit ajouté) -->
+  <div id="notif" class="notif">✅ Produit ajouté au panier</div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+  <script>
+    // Afficher le panier sur la page cart.html
+    function afficherPanier() {
+      const tbody = document.querySelector("#cart-body");
+      const totalElement = document.querySelector("#total");
+
+      if (!tbody || !totalElement) return;
+
+      let total = 0;
+      tbody.innerHTML = "";  // Vider le contenu actuel du panier
+
+      // Récupérer le panier depuis localStorage
+      let panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+      panier.forEach((item, index) => {
+        const sousTotal = item.prix * item.quantite;
+        total += sousTotal;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.nom}</td>
+          <td>${item.quantite}</td>
+          <td>${item.prix.toLocaleString()} FCFA</td>
+          <td>${sousTotal.toLocaleString()} FCFA</td>
+          <td><button onclick="supprimerProduit(${index})">✖</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      totalElement.textContent = `${total.toLocaleString()} FCFA`;
+    }
+
+    // Supprimer un produit du panier
+    function supprimerProduit(index) {
+      let panier = JSON.parse(localStorage.getItem('panier')) || [];
+      panier.splice(index, 1); // Retirer le produit du panier
+      localStorage.setItem('panier', JSON.stringify(panier)); // Sauvegarder les modifications
+      afficherPanier(); // Réafficher le panier
+      mettreAJourIconePanier(); // Mettre à jour l'icône du panier
+    }
+
+    // Si on est sur la page cart.html, afficher le panier automatiquement
+    if (window.location.pathname.includes("cart.html")) {
+      afficherPanier();
+    }
+
+    // Mettre à jour l'icône du panier
+    function mettreAJourIconePanier() {
+      const span = document.getElementById("cart-count");
+      if (!span) return;
+
+      let panier = JSON.parse(localStorage.getItem('panier')) || [];
+      let totalArticles = panier.reduce((s, a) => s + a.quantite, 0);
+      span.textContent = totalArticles;
+    }
+
+    // Appel de la fonction d'icône de panier au chargement
+    if (document.readyState !== "loading") mettreAJourIconePanier();
+    else document.addEventListener("DOMContentLoaded", mettreAJourIconePanier);
+  </script>
+
+</body>
+</html>
+
+

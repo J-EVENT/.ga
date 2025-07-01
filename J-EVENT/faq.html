@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aide & FAQ - J-event</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+ <header>
+  <a href="index.html" class="logo">J-event</a>
+
+  <!-- MENU BURGER MOBILE -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+  <!-- MENU NAVIGATION -->
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="products.html">Événements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PANIER FIXE À DROITE -->
+   <form class="search-form" onsubmit="return searchProducts()">
+  <input type="text" id="search-input" placeholder="Rechercher...">
+  <button type="submit">🔍</button>
+</form>
+
+  <a href="cart.html" class="cart-icon">
+    🛒 <span id="cart-count">0</span>
+  </a>
+</header>
+
+
+
+
+  <main class="legal-page">
+    <h1>❓ Aide & FAQ</h1>
+
+    <h2>Comment acheter un billet sur J-event ?</h2>
+    <p>Sélectionnez un événement, cliquez sur "Ajouter au panier", puis rendez-vous dans votre panier pour valider la commande. Vous serez redirigé vers WhatsApp pour finaliser.</p>
+
+    <h2>Quels moyens de paiement acceptez-vous ?</h2>
+    <p>Nous acceptons Mobile Money (Airtel Money, Moov Money), paiement sur place, ou tout autre moyen précisé par l’organisateur.</p>
+
+    <h2>Où puis-je recevoir mon billet ?</h2>
+    <p>Les billets sont envoyés par WhatsApp ou email après confirmation de votre commande.</p>
+
+    <h2>J’ai fait une erreur dans ma commande, que faire ?</h2>
+    <p>Contactez-nous rapidement via WhatsApp ou via notre <a href="contact.html">formulaire de contact</a>. Si l’événement n’a pas encore lieu, nous pourrons ajuster la commande.</p>
+
+    <h2>Les billets sont-ils remboursables ?</h2>
+    <p>Non, sauf si l’événement est annulé par l’organisateur. Dans ce cas, nous vous informerons des modalités de remboursement.</p>
+
+    <h2>Puis-je acheter plusieurs billets à la fois ?</h2>
+    <p>Oui, vous pouvez ajouter plusieurs billets dans votre panier avant de valider.</p>
+
+    <h2>J’ai un autre problème, comment vous contacter ?</h2>
+    <p>Vous pouvez nous écrire via WhatsApp ou via la page <a href="contact.html">Contact</a>.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 J-event. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
