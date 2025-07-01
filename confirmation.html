@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>J-event - Confirmation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header>
+  <a href="index.html" class="logo">
+    <img src="images/logo.jpg" alt="Logo de J-event" class="logo-img">
+  </a>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Événements</a></li>
+        <li><a href="cart.html">Panier</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MESSAGE DE CONFIRMATION -->
+  <main>
+  <section class="confirmation">
+    <h1>📝 Informations de livraison</h1>
+    <p>Veuillez remplir le formulaire ci-dessous pour finaliser votre commande.</p>
+
+    <form id="livraison-form">
+      <div class="form-group">
+        <label for="nom">Nom complet :</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Numéro de téléphone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">Adresse de livraison :</label>
+        <textarea id="adresse" name="adresse" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Envoyer la commande</button>
+    </form>
+
+    <div id="confirmation-message" style="display:none; margin-top:20px;">
+      ✅ Merci ! Votre commande a bien été transmise.
+    </div>
+  </section>
+</main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 J-event. Tous droits réservés.</p>
+  </footer>
+
+  
+<script>
+  const form = document.getElementById("livraison-form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("nom").value;
+    const telephone = document.getElementById("telephone").value;
+    const adresse = document.getElementById("adresse").value;
+
+    const panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+    let message = `Bonjour, je souhaite passer une commande via J-event :\n\n`;
+
+    if (panier.length === 0) {
+      message += `⚠️ Aucun produit sélectionné.\n`;
+    } else {
+      panier.forEach(item => {
+        message += `- ${item.nom} x${item.quantite} (${item.prix * item.quantite} FCFA)\n`;
+      });
+    }
+
+    message += `\n👤 Nom : ${nom}\n📞 Téléphone : ${telephone}\n📍 Adresse : ${adresse}`;
+
+    // Numéro WhatsApp au format international sans "+"
+    const numeroWhatsApp = "24162692782";
+    const lien = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(message);
+
+    localStorage.removeItem('panier');
+    window.location.href = lien;
+    // Vide le panier après 3 secondes
+    setTimeout(() => {
+      localStorage.removeItem('panier');
+    }, 3000);
+  });
+</script>
+
+
+<div id="notif" class="notif">✅ Produit ajouté au panier</div>
+
+</body>
+</html>

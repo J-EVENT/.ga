@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>J-event - Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="images/logo.jpg" alt="Logo de J-event" class="logo-img">
+  </a>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="products.html">Événements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <form class="search-form" onsubmit="return searchProducts()">
+  <input type="text" id="search-input" placeholder="Rechercher...">
+  <button type="submit">🔍</button>
+</form>
+
+  <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+</header>
+
+<main>
+  <section class="contact-section">
+    <h1>📞 Contactez-nous</h1>
+    <p>Une question ? Besoin d'aide ? Écrivez-nous ici :</p>
+
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Adresse e-mail :</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Votre message :</label>
+        <textarea id="message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Envoyer via WhatsApp</button>
+    </form>
+
+    <div id="confirmation" style="display:none; margin-top:20px;">
+      ✅ Merci pour votre message, nous vous répondrons rapidement !
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 J-event. Tous droits réservés.</p>
+</footer>
+
+<script>
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+    const messageClient = document.getElementById("message").value;
+
+    let message = "📩 Message via la page Contact J-event :\n\n";
+message += "👤 Nom : " + nom + "\n";
+message += "📧 Email : " + email + "\n";
+message += "📝 Message :\n" + messageClient;
+
+    const numeroWhatsApp = "24162692782";
+    const lien = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(message);
+
+    window.location.href = lien;
+  });
+</script>
+
+</body>
+</html>
