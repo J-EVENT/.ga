@@ -85,6 +85,11 @@
       // Récupérer le panier depuis localStorage
       let panier = JSON.parse(localStorage.getItem('panier')) || [];
 
+      if (panier.length === 0) {
+        tbody.innerHTML = "<tr><td colspan='5'>Votre panier est vide.</td></tr>";
+        return;  // Si le panier est vide, afficher un message.
+      }
+
       panier.forEach((item, index) => {
         const sousTotal = item.prix * item.quantite;
         total += sousTotal;
@@ -110,11 +115,7 @@
       localStorage.setItem('panier', JSON.stringify(panier)); // Sauvegarder les modifications
       afficherPanier(); // Réafficher le panier
       mettreAJourIconePanier(); // Mettre à jour l'icône du panier
-    }
-
-    // Si on est sur la page cart.html, afficher le panier automatiquement
-    if (window.location.pathname.includes("cart.html")) {
-      afficherPanier();
+      showNotif("✅ Produit supprimé du panier");
     }
 
     // Mettre à jour l'icône du panier
@@ -127,6 +128,24 @@
       span.textContent = totalArticles;
     }
 
+    // Afficher une notification
+    function showNotif(message) {
+      const notif = document.getElementById("notif");
+      if (!notif) return;
+
+      notif.textContent = message;
+      notif.classList.add("show");
+
+      setTimeout(() => {
+        notif.classList.remove("show");
+      }, 3000);
+    }
+
+    // Si on est sur la page cart.html, afficher le panier automatiquement
+    if (window.location.pathname.includes("cart.html")) {
+      afficherPanier();
+    }
+
     // Appel de la fonction d'icône de panier au chargement
     if (document.readyState !== "loading") mettreAJourIconePanier();
     else document.addEventListener("DOMContentLoaded", mettreAJourIconePanier);
@@ -134,5 +153,4 @@
 
 </body>
 </html>
-
 

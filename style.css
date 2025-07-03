@@ -30,15 +30,16 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-
 .logo {
   font-size: 24px;
   font-weight: bold;
-  .logo-img {
-  height: 50px; /* Ajuste la taille de l'image du logo */
-  width: auto; /* Garder les proportions */
+  color: white;
+  text-decoration: none;
 }
 
+.logo-img {
+  height: 50px; /* Ajuste la taille de l'image du logo */
+  width: auto; /* Garder les proportions */
 }
 
 nav ul {
@@ -82,7 +83,7 @@ nav a.active {
   text-decoration: none;
   border: none;
   cursor: pointer;
-   border-radius: 8px;
+  border-radius: 8px;
   font-weight: bold;
   transition: background 0.3s, transform 0.2s;
 }
@@ -119,7 +120,6 @@ main h1 {
   padding: 15px;
   text-align: center;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -127,7 +127,6 @@ main h1 {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
-
 
 .product-card img {
   max-width: 100%;
@@ -194,6 +193,7 @@ footer {
   padding: 15px;
   margin-top: 40px;
 }
+
 /* Page Détail Produit */
 .product-detail {
   display: flex;
@@ -234,6 +234,8 @@ footer {
 .product-info p {
   margin-bottom: 20px;
 }
+
+/* Confirmation */
 .confirmation {
   text-align: center;
   padding: 80px 20px;
@@ -253,6 +255,8 @@ footer {
   font-size: 18px;
   margin-bottom: 30px;
 }
+
+/* Cart Count */
 .cart-count {
   background-color: #ff4d4d;
   color: white;
@@ -261,6 +265,8 @@ footer {
   font-size: 13px;
   margin-left: 5px;
 }
+
+/* Formulaire de Contact */
 form {
   max-width: 500px;
   margin: 20px auto;
@@ -285,6 +291,8 @@ textarea {
   border: 1px solid #ccc;
   font-size: 16px;
 }
+
+/* Fade In */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -297,6 +305,8 @@ textarea {
     transform: translateY(0);
   }
 }
+
+/* Notification */
 .notif {
   position: fixed;
   bottom: 20px;
@@ -316,6 +326,8 @@ textarea {
 .notif.show {
   opacity: 1;
 }
+
+/* Contact Section */
 .contact-section {
   max-width: 600px;
   margin: 50px auto;
@@ -335,47 +347,8 @@ textarea {
   text-align: center;
   margin-bottom: 25px;
 }
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
-.confirmation {
-  max-width: 600px;
-  margin: 100px auto;
-  padding: 30px;
-  background-color: #fff;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
 
-.confirmation h1 {
-  font-size: 26px;
-  margin-bottom: 20px;
-}
-
-.confirmation p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-.footer-links {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  margin: 0 8px;
-  font-size: 14px;
-}
-
-.footer-links a:hover {
-  color: #fff;
-}
-/* Menu mobile */
+/* Menu Mobile */
 .menu-icon {
   display: none;
   font-size: 28px;
@@ -439,6 +412,8 @@ header {
     display: block;
   }
 }
+
+/* Panier */
 .cart-icon {
   position: relative;
   font-size: 22px;
@@ -458,13 +433,7 @@ header {
   right: -12px;
 }
 
-/* Positionne la cart-icon à droite */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
+/* Responsive Mobile */
 @media (max-width: 768px) {
   .cart-icon {
     font-size: 20px;
@@ -472,178 +441,4 @@ header {
     top: 18px;
     right: 15px;
   }
-}
-/* HEADER GÉNÉRAL */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #111;
-  color: white;
-  padding: 15px 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 999;
-}
-
-/* MENU BURGER */
-.menu-icon {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-  margin-left: auto;
-}
-
-#menu-toggle {
-  display: none;
-}
-
-/* MENU LIENS */
-.nav-links ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-/* PANIER */
-.cart-icon {
-  position: relative;
-  font-size: 22px;
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-}
-
-#cart-count {
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 13px;
-  position: absolute;
-  top: -8px;
-  right: -12px;
-}
-
-/* RESPONSIVE MOBILE */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #111;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  #menu-toggle:checked + .menu-icon + .nav-links {
-    display: block;
-  }
-}
-.search-form {
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
-}
-
-.search-form input {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 20px 0 0 20px;
-  outline: none;
-  font-size: 14px;
-}
-
-.search-form button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #fff;
-  color: #111;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-/* Responsive mobile */
-@media (max-width: 768px) {
-  .search-form {
-    position: absolute;
-    top: 60px;
-    left: 10px;
-    right: 10px;
-    width: auto;
-    z-index: 999;
-    justify-content: center;
-  }
-
-  #menu-toggle:checked + .menu-icon + .nav-links {
-    margin-top: 50px;
-  }
-}
-.product-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Espacement entre les cartes */
-}
-
-.product-card {
-  width: 300px; /* Ajuste la largeur des cartes selon tes besoins */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.pricing {
-  display: flex;
-  justify-content: space-around; /* Répartit l'espace entre les prix */
-  flex-direction: column; /* Aligne les éléments verticalement */
-  gap: 15px; /* Espacement vertical entre les éléments */
-}
-
-.price {
-  text-align: center;
-}
-
-.price p {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.price h4, .price h5 {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-button {
-  background-color: #4CAF50; /* Couleur du bouton */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
 }
